@@ -1,0 +1,393 @@
+<style>
+.grid_box {
+  width: 100%;
+  height: auto;
+}
+.grid_box .page-width {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.grid_box h2 {
+  text-align: center;
+  font-size: 44px;
+  font-family: Cooper, sans-serif;
+  margin: 0;
+  line-height: 1;
+}
+.grid_box span {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 30px;
+}
+.grid_box span p {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 25px;
+  max-width: 800px;
+  width: 100%;
+}
+.grid_box .box_inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  gap: 21px;
+  padding: 0 30px;
+  margin-top: 70px;
+}
+.grid_box .inner_col {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #FFFBF3;
+  border-radius: 30px;
+  padding: 20px 40px;
+}
+.grid_box .box_img {
+  width: 100%;
+  height: 138px;
+}
+.grid_box .box_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.grid_box h3 {
+  margin: 0;
+  margin-top: 13px;
+  font-size: 20px;
+  line-height: 1;
+}
+.grid_box h4 {
+  margin-top: 22px;
+  font-size: 18px;
+  line-height: 25px;
+  margin-bottom: 0;
+}
+.grid_box h5 {
+  width: fit-content;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: .3s ease;
+  cursor: pointer;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+.grid_box .new_element {
+  display: none !important;
+}
+.grid_box .grid_box_inner {
+  display: none !important;
+}
+.grid_box .hidden {
+  display: none;
+}
+.grid_box .popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 999; 
+}
+.grid_box .popup {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 57%;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  opacity: 1; 
+}
+.grid_box .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+@media(max-width: 1199px) {
+  .grid_box .box_inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 767px) {
+  .grid_box .new_element {
+    display: block !important;
+  }
+  .box_inner {
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    display: flex !important;
+  }
+  .inner_col {
+    scroll-snap-align: start;
+  }
+  .box_inner::-webkit-scrollbar {
+    display: none; 
+  }
+  .grid_box .inner_col {
+    width: 37%;
+    padding: 0px;
+    flex-shrink: 0;
+    background: none;
+    opacity: 0.5;
+  }
+  .grid_box .inner_col.active {
+    opacity: 1;
+  }
+  .grid_box h2 {
+    font-size: 22px;
+    line-height: 30px;
+    padding: 0;
+  }
+  .grid_box span {
+    padding-top: 38px;
+  }
+  .grid_box span p{
+    font-size: 16px;
+  }
+  .grid_box h3 {
+    font-size: 16px;
+    text-align: center;
+  }
+  .grid_box h4 {
+    display: none;
+    font-size: 16px;
+    max-width: 210px;
+    margin: 20px auto 0;
+    text-align: center;
+  }
+  .grid_box h5 {
+    display: none;
+  }
+  .grid_box .box_img {
+    height: 25px;
+  }
+  .grid_box .new_element {
+    height: 93px;
+  }
+  .grid_box .new_element img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .panel_box_image {
+    display: none;
+  }
+  .grid_box_inner {
+    width: 100%;
+    height: auto;
+    display: flex;
+  }
+  .panel_box_image.active {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  img.box_img_url {
+    width: 93px;
+    height: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: flex;
+  }
+}
+</style>
+
+<section class="grid_box">
+  <div class="page-width">
+    {% if section.settings.headline != blank %}
+      <h2>{{ section.settings.headline }}</h2>
+    {% endif %}
+    {% if section.settings.desc != blank %}
+      <span>{{ section.settings.desc }}</span>
+    {% endif %}
+    <div class="box_inner">
+      {% for block in section.blocks %}
+        <div class="inner_col">
+          <div class="box_img">
+            {% if block.settings.box_img != blank %}
+              <img class="box_img_url" data-img-url="{{ block.settings.box_img | image_url: width: block.settings.box_img.width }}" src="{{ block.settings.box_img | image_url: width: block.settings.box_img.width }}" alt="Product Image" loading="lazy">
+            {% endif %}
+          </div>
+          {% if block.settings.sub_head != blank %}
+            <h3 class="upper_headline">{{ block.settings.sub_head }}</h3>
+          {% endif %}
+          {% if block.settings.paragraph != blank %}
+            <h4 class="desc">{{ block.settings.paragraph }}</h4>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="grid_box_inner">
+      {% for block in section.blocks %}
+        <div class="panel_box_image">
+          {% if block.settings.box_img != blank %}
+            <img class="box_img_url" data-img-url="{{ block.settings.box_img | image_url: width: block.settings.box_img.width }}" src="{{ block.settings.box_img | image_url: width: block.settings.box_img.width }}" alt="Product Image" loading="lazy">
+          {% endif %}
+          {% if block.settings.sub_head != blank %}
+            <h3 class="upper_headline">{{ block.settings.sub_head }}</h3>
+          {% endif %}
+          {% if block.settings.paragraph != blank %}
+            <h4 class="desc">{{ block.settings.paragraph }}</h4>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    {% if section.settings.bottom_text != blank %}
+      <h5 id="popupTrigger">{{ section.settings.bottom_text }}</h5>
+    {% endif %}
+    <div id="popupOverlay" class="popup-overlay hidden" aria-hidden="true"></div>
+    <div id="popup" class="popup hidden" aria-hidden="true">
+      <div class="popup-content">
+        <span class="close">&times;</span>
+        {% if section.settings.pop_up_text != blank %}
+          <span>{{ section.settings.pop_up_text }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  var topAccordion = document.querySelectorAll('.grid_box .inner_col');
+  var topPanels = document.querySelectorAll('.grid_box .panel_box_image');
+
+  topPanels[0].classList.add('active');
+
+  if (topPanels[0].classList.contains('active')) {
+    var desc = topPanels[0].querySelector('.desc');
+    if (desc) {
+      desc.style.display = "block";
+    }
+  }
+
+  topAccordion.forEach((col, index) => {
+    col.addEventListener('click', function() {
+      topPanels.forEach(panel => {
+        panel.classList.remove('active');
+        var desc = panel.querySelector('.desc');
+        if (desc) {
+          desc.style.display = "none";
+        }
+      });
+
+      if (topPanels[index]) {
+        topPanels[index].classList.add('active');
+
+        var desc = topPanels[index].querySelector('.desc');
+        if (desc) {
+          desc.style.display = "block";
+        }
+      }
+    });
+  });
+
+  // Popup JS
+  var popupTrigger = document.getElementById('popupTrigger');
+  var popup = document.getElementById('popup');
+  var popupOverlay = document.getElementById('popupOverlay');
+  var closeButton = document.querySelector('.close');
+
+  popupTrigger.addEventListener('click', function() {
+    popupOverlay.classList.remove('hidden');
+    popup.classList.remove('hidden');
+    popupOverlay.setAttribute('aria-hidden', 'false');
+    popup.setAttribute('aria-hidden', 'false');
+  });
+
+  closeButton.addEventListener('click', function() {
+    popupOverlay.classList.add('hidden');
+    popup.classList.add('hidden');
+    popupOverlay.setAttribute('aria-hidden', 'true');
+    popup.setAttribute('aria-hidden', 'true');
+  });
+
+  window.addEventListener('click', function(e) {
+    if (e.target == popupOverlay) {
+      popupOverlay.classList.add('hidden');
+      popup.classList.add('hidden');
+      popupOverlay.setAttribute('aria-hidden', 'true');
+      popup.setAttribute('aria-hidden', 'true');
+    }
+  });
+});
+</script>
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Grid Box",
+    "settings": [
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Headline",
+          "default": "Packed With Superfoods & Essential Nutrients"
+        },
+        {
+          "type": "richtext",
+          "id": "desc",
+          "label": "Description",
+          "default": "<p>Our ancestors THRIVED for centuries without doctors, modern medicine, and little to no medical knowledge. The reason why is simple... they used nature’s most powerful ingredients to heal their bodies naturally.Now, we’re passing on the same healing power to you.</p>"
+        },
+        {
+          "type": "text",
+          "id": "bottom_text",
+          "label": "Bottom Text",
+          "default": "View full ingredients list"
+        },
+        {
+          "type": "richtext",
+          "id": "pop_up_text",
+          "label": "Pop Up Text"
+        }
+      ],
+        "blocks": [
+       {
+         "name": "Slide",
+         "type": "slide",
+         "settings": [
+           {
+             "type": "image_picker",
+             "id": "box_img",
+             "label": "Image"
+           },
+           {
+             "type": "text",
+             "id": "sub_head",
+             "label": "Subhead",
+             "default": "Soursop"
+           },
+           {
+             "type": "text",
+             "id": "paragraph",
+             "label": "Paragraph",
+             "default": "Supports cellular health, enhances mood, and a powerful antioxidant."
+           }
+         ]
+       }
+    ],
+    "presets": [
+      {
+        "name": "Grid Box"
+      }
+    ]
+  }
+{% endschema %}

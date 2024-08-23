@@ -1,0 +1,572 @@
+{% comment %} 
+  <style>
+.navbar {
+  overflow: hidden;
+}
+
+.navbar a {
+  float: left;
+  font-size: 13px;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 65px;
+    padding-bottom: 30px;
+      height: 500px;
+}
+  .dropdown:hover .dropbtn{
+    text-decoration: underline;
+  }
+.dropdown .dropbtn {
+  border: none;
+  outline: none;
+  color: black;
+  padding: 0 10px;
+  background-color: inherit;
+  font-family: "Geograph";
+    font-size:14px;
+    font-weight:300;
+  font-weight: 300;
+  line-height: 20px;
+  margin: 0;
+}
+
+.norml_inner {
+    display: flex;
+    column-gap: 10px;
+      align-items: center;
+}
+div#myDIV {
+    width: 100%;
+    right: 0;
+    left: 0;
+}
+ .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    left: 130px;
+    z-index: 1;
+    right: 130px;
+} 
+.dropdown-content.active{display:block}
+
+.dropdown-content .header {
+  background: red;
+  padding: 16px;
+  color: white;
+}
+/* 
+.dropdown:hover .dropdown-content {
+  display: block;
+}  */
+
+/* Create three equal columns that floats next to each other */
+.column {
+     width: 20%;
+    position: relative;
+/*     margin: 0 auto; */
+}
+
+.column a {
+  float: none;
+  color: black;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+a.menu-li {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 300;
+  padding: 10px 0 8px 10px;
+/*   font-family: "FTSystem Book", sans-serif; */
+
+}
+  img.no-image {
+    width: 50%;
+    margin:0 auto
+  }
+/*     height: 100%; */
+}
+/*   .img_product_abacus {
+    height: 100%;
+} */
+.fx-slider {
+    line-height: 0;
+   height: 100%;
+}
+a.fx_slidelnk1 {
+    height: 100%;
+}
+.img-overlay {
+/*     position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 22%);
+    width: 100%;
+    height: 100%;
+    transition: .5s ease; */
+}
+  .img-overlay{
+/*     opacity: 1; */
+  }
+  .blogs-overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 22%);
+    width: 100%;
+    height: 100%;
+    transition: .5s ease;
+}
+  .blogs-overlay{
+    opacity: 1;
+  }
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.dropdown-content {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+  .custom-width {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+  .inner-width {
+    padding-right: 70px;
+    padding-left: 70px;
+    overflow-y: scroll;
+}
+  h3.column_itms {
+    font-size: 13px;
+    margin: 0;
+    padding: 10px;
+    line-height: 20px;
+/*   font-family: "FTSystem Book", sans-serif; */
+}
+.dropdown.fash-6 a {
+    color: rgb(173, 31, 0);
+}
+.fash-menu-1 img {
+    width: 100%;
+    margin: 0 auto;
+}
+.fash-menu-2 img{
+    width: 100%;
+    margin: 0 auto;
+}
+.fx-slider{ position: relative;}
+.fash-tit-content-44:hover{text-decoration: underline;}
+.fash-col-link-26:hover{text-decoration: underline;}
+.fash-tit-content-45:hover{text-decoration: underline;}
+.fash-col-link-50:hover{text-decoration: underline;}
+ .fash-tit-content-9:hover{text-decoration: underline;}
+ .fash-col-link-24:hover{text-decoration: underline;}
+.fash-col-link-26 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff!important;
+    font-size: 18px!important;
+}
+.fx-slider-2 {
+    position: relative;
+}
+.fash-tit-content-44{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  color: #fff!important;
+    font-size: 18px!important;
+}
+a.fash-tit-content-45{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff!important;
+    font-size: 18px!important;
+ }
+.fash-col-link-50{
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff!important;
+    font-size: 18px!important;
+ }
+.fash-tit-content-9{
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff!important;
+    font-size: 18px!important;
+}
+.fash-col-link-24{
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff!important;
+  font-size: 18px!important;
+}
+    
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    height: auto;
+  }
+}
+
+  button.dropbtn {
+    cursor: pointer;
+}
+  .collection-name {
+    position: absolute;
+    top: 50px;
+    left: 150px;
+}
+  .collection-name button {
+    padding: 20px 10px;
+    width: 35%;
+    border-radius: 50px;
+    border: none;
+    font-size: 13px;
+    line-height: 20px;
+    color: black;
+    cursor: pointer;
+    background-color: white;
+}
+h3.col_heading {
+    font-size: 30px;
+    line-height: 25px;
+    color: white;
+    font-weight: 500;
+    margin: 25px;
+/*       font-family: "FTSystem Book", sans-serif; */
+}
+.feature-subheader {
+    font-size: 13px;
+    color: white;
+    font-weight: 400;
+}
+  @media screen and (max-width: 767px){
+    #myDIV {
+    width: 100%;
+    left: 0;
+}
+    .norml_inner {
+    flex-direction: column;
+}
+    .mega_menu_main {
+    display: none;
+}
+  }
+  .column_img {
+    width: 33%;
+    position: relative;
+
+}
+h3.my-color {
+    color: #bb5756;
+}  
+ .hide-div, .hide-blog, .col-3{
+    display: none;
+}
+  .blog-img {
+    width: 100%;
+    line-height: 0;
+}
+   img.post-img {
+    width: 100%;
+}
+  a.at-bg-post {
+    width: 100%;
+}
+.blog-post {
+    width: 30%;
+    position: relative;
+    height: 59%;
+}
+    button.blog_btn {
+    padding: 10px 20px;
+    width: 45%;
+    border-radius: 50px;
+    border: none;
+    font-size: 13px;
+    line-height: 20px;
+    color: black;
+    cursor: pointer;
+    background-color: white;
+}
+  @media only screen and (max-width: 990px){
+    .mega_menu_main {
+    display: none;
+    }
+  }
+</style>
+
+<!--     My Custom Mega Menu -->
+
+    <div class="mega_menu_main">
+    <div class="navbar">
+        <!-----Normal Menu----->
+        <div class="norml_inner">
+            {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                {%- when 'normal-menu' -%}
+            <div class="dropdown fash-{{ forloop.index }}">
+                <a href="{{ block.settings.norml-link }}" class="dropbtn">{{ block.settings.norml-head }}</a>
+            </div>
+                  
+            <!----Mega Menu---->
+          {%- when 'mega-menu' -%}
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn"> 
+                    {{ block.settings.mega-head }}
+                  </button>
+                  
+                  <div class="dropdown-content" id="myDIV">
+                    <div class="row inner-width blog-width">
+                        <div class="column">
+                            <h3 class="column_itms"> {{ block.settings.mega-sub-head }}</h3>
+                            {%- if block.settings.menu != blank -%}
+                            <ul class="footer-block__details-content list-unstyled">
+                                {%- for link in block.settings.menu.links -%}
+                                <li>
+                                    <a href="{{ link.url }}" class="menu-li"{% if link.active %} list-menu__item--active{% endif %}">
+                                    {{ link.title }}
+                                    </a>
+                                </li>
+                                {%- endfor -%}
+                            </ul>
+                            {%- endif -%}
+                        </div> 
+                      
+<!--                       second link list here -->
+                       <div class="column" >
+                            <h3 class="column_itms"> {{ block.settings.mega-sub-head-sec }}</h3>
+                            {%- if block.settings.menu != blank -%}
+                            <ul class="footer-block__details-content list-unstyled">
+                                {%- for link in block.settings.menu_sec.links -%}
+                                <li>
+                                    <a href="{{ link.url }}" class="menu-li"{% if link.active %} list-menu__item--active{% endif %}">
+                                    {{ link.title }}
+                                    </a>
+                                </li>
+                                {%- endfor -%}
+                            </ul>
+                            {%- endif -%}
+                        </div> 
+<!--                       End Here -->
+
+                      <!--                       Third link list here -->
+                       <div class="column {% if block.settings.col-3  %} col-3 {% endif %}">
+                            <h3 class="column_itms"> {{ block.settings.mega-sub-head-thd }}</h3>
+                            {%- if block.settings.menu != blank -%}
+                            <ul class="footer-block__details-content list-unstyled">
+                                {%- for link in block.settings.menu_thd.links -%}
+                                <li>
+                                    <a href="{{ link.url }}" class="menu-li"{% if link.active %} list-menu__item--active{% endif %}">
+                                    {{ link.title }}
+                                    </a>
+                                </li>
+                                {%- endfor -%}
+                            </ul>
+                            {%- endif -%}
+                        </div> 
+<!--                       End Here -->
+
+<!--                       collection Here -->
+                      
+    <div class="column_img {% if block.settings.hide-div  %} hide-div {% endif %}">
+    <h3 class="column_itms"> {{ block.settings.mega-sub-head-frth }}</h3>
+    {% for collection in collections %}
+    {% if collection.handle == block.settings.collection %}
+    <div class="fx-slider">
+    <div class="fash-menu-1"><img src="{{ collection.image.src | img_url: 'medium' }}" class=""></div> 
+    <div class="feature-subheader"> <a class="fash-col-link-{{ forloop.index }}" href="{{ collection.url }}" >{{ collection.title }}</a></div>
+    </div>
+    {% endif %}
+    {% if collection.handle == block.settings.collection2 %}
+    <div class="fx-slider-2">
+    <div class="fash-menu-2"><img src="{{ collection.image.src | img_url: 'medium' }}" class=""></div> 
+    <div class="fash-subheader-2"> 
+    <a class="fash-tit-content-{{ forloop.index }}" href="{{ collection.url }}" >{{ collection.title }}</a>
+    </div>
+    </div>
+    {% endif %}
+    {% endfor %} 
+    </div>
+            <div class="blog-post {% if block.settings.hide-blog  %} hide-blog {% endif %}">
+            {% assign article = block.settings.arti-pst %}
+            {% assign articles = blog.articles %}  
+            <div class="blog-inner">
+            <a href="{{ article.url }}" class="at-bg-post">
+            <div class="blog-img"> <img src="{{ article.image.src | img_url: 'medium' }}" class="post-img" alt="{{ article.image.alt | escape }}" /></div>
+            <div class="img-overlay">
+            <div class="collection-name">
+            <h3 class="col_heading">{{ article.title }}</h3>
+            <button class="blog_btn">Read Our Charter</button>
+            </div>
+            </div>
+            </a>
+            </div>
+            </div>
+</div>
+                  </div>
+            </div>
+            {% endcase %}  
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $(".dropbtn").click(function() {
+      var $dropdownContent = $(this).next(".dropdown-content");
+
+      // Remove active class from other dropdown contents
+      $(".dropdown-content").not($dropdownContent).removeClass("active");
+
+      $dropdownContent.toggleClass("active");
+    });
+  });
+</script>
+
+<!-- <script>
+    $(document).ready(function() {
+      $(".dropbtn").click(function() {
+        var $dropdownContent = $(this).next(".dropdown-content");
+        $dropdownContent.toggleClass("active");
+      });
+    });
+  </script>
+ -->
+ {% endcomment %}
+
+
+
+
+
+
+
+
+
+{% comment %}
+  Renders a megamenu for the header.
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      <li>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset"
+              >
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | escape -}}
+                </span>
+                {% render 'icon-caret' %}
+              </summary>
+              <div
+                id="MegaMenu-Content-{{ forloop.index }}"
+                class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                tabindex="-1"
+              >
+                <ul
+                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  role="list"
+                >
+                  {%- for childlink in link.links -%}
+                    <li>
+                      <a
+                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                        href="{{ childlink.url }}"
+                        class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{ childlink.title | escape }}
+                      </a>
+                      {%- if childlink.links != blank -%}
+                        <ul class="list-unstyled" role="list">
+                          {%- for grandchildlink in childlink.links -%}
+                            <li>
+                              <a
+                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                href="{{ grandchildlink.url }}"
+                                class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                                {% if grandchildlink.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ grandchildlink.title | escape }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </details>
+          </header-menu>
+        {%- else -%}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

@@ -1,0 +1,381 @@
+
+
+
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"/>
+<style>
+   section#switch-smooth-package {
+        display: block !important;
+ }
+ .container-layer-for-tab-fn img{
+    width:100%;
+  }
+ .container-layer-for-tab-fn .slick-prev, .container-layer-for-tab-fn .slick-next {
+    width: auto !important;
+    height: 23px !important;
+      transform: unset !important;
+ }
+  .container-layer-for-tab-fn .slick-prev:before, .container-layer-for-tab-fn .slick-next:before {
+    display:none;
+  }
+  .container-layer-for-tab-fn .slick-prev{
+    left:0 !important;
+  }
+  .container-layer-for-tab-fn .slick-next {
+    right:0 !important;
+  }
+    .container-layer-for-tab-fn div#tab-data-add_step_adRxiw {
+    position: relative;
+ }
+</style>
+{% style %}
+
+  #hr-subscription-tabs-{{ section.id }} .top-heading,
+  #hr-subscription-tabs-{{ section.id }} .description { 
+    color: {{ section.settings.font_color }}; 
+  }
+
+  #hr-subscription-tabs-{{ section.id }} .tabs-content {
+    background-color: {{ section.settings.tab_content_bg_color }};
+  }
+
+  #hr-subscription-tabs-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    margin-top: {{ section.settings.margin_top_desktop }}px;
+    margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+  }
+
+ #hr-subscription-tabs-{{ section.id }} .top-heading {
+  color:#fff;
+}
+
+   #hr-subscription-tabs-{{ section.id }} .description p{
+    color:#fff;
+  }
+
+   #hr-subscription-tabs-{{ section.id }} .tabs-content {
+    padding: 50px 10px;
+    box-shadow: 1px 1px 2px #241f1f;
+    border-radius: 10px;
+}
+  @media screen and (max-width: 991px) {
+
+#hr-subscription-tabs-{{ section.id }} {
+  margin-top: {{ section.settings.margin_top_mobile }}px;
+  margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+}
+  }
+
+  }
+{% endstyle %}
+{{ 'hr-subscrip-copy.css' | asset_url | stylesheet_tag }}
+
+<section class="container-layer-for-tab-fn" id="switch-smooth-package"  style="display:none"> 
+
+<section class="hr-subscription-tabs " id="hr-subscription-tabs-{{ section.id }}" >
+  <div class="container" >
+    {% if section.settings.heading != blank %}
+      <h2 class="top-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% comment %}  <span class="description">{{ section.settings.desc }}</span> 
+     <div class="step-box-container" id="tabs-copy-{{section.id}}">
+       <div class="step-box-dr">
+          <div class="step-box-content">
+            <h2>{{ section.settings.step-txt }}</h2>
+            <span>{{ section.settings.step-desc }}</span>
+          </div>
+      </div>
+       {% render 'icon-arrow' %}
+       <div class="step-box-dr">
+          <div class="step-box-content">
+            <h2>{{ section.settings.step-txt2 }}</h2>
+            <span>{{ section.settings.step-desc2 }}</span>
+          </div>
+       </div>
+       {% render 'icon-arrow' %}
+       <div class="step-box-dr">
+          <div class="step-box-content">
+            <h2>{{ section.settings.step-txt3 }}</h2>
+            <span>{{ section.settings.step-desc3 }}</span>
+          </div>
+       </div>
+     </div>{% endcomment %}
+
+    <div class="tabs-inner">
+      <ul id="tabs-nav-{{ section.id }}" class="tabs-nav">
+        {% for block in section.blocks %}
+          {% if block.settings.tab_title != blank %}
+            <li class="tab-list">
+              <span id="tab-{{ forloop.index }}-{{ section.id }}" class="tab-menu-btn">{{ block.settings.tab_title }}</span>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <div id="tabs-content-{{ section.id }}" class="tabs-content">
+        {% for block in section.blocks %}
+          <div id="tab-content-{{ forloop.index }}-{{ section.id }}" class="tab-content">
+            <div class="tab-data" id="tab-data-{{ block.id }}">
+              <div class="data-content">
+                {% for proitem in block.settings.collection.products %}
+                  <div class="collection-col"> 
+                    <div class="product-image">
+                      {{ proitem.images[0] | image_url: width: proitem.image.width | image_tag: loading: 'lazy' }}
+                    </div>
+                    <h3>{{ proitem.title }}</h3>
+                     <div class="save-product-description">
+                       {{ proitem.description | truncatewords: 15, "..." }}
+                     </div>
+                    <span class="product-price">{{ proitem.price | money_without_trailing_zeros }}</span>
+                    <a href="{{ proitem.url }}" class="product-link">{{ block.settings.shop_now }}</a>
+                  </div> 
+                {% endfor %}
+                
+              </div>
+               <button class="slick-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="17" viewBox="0 0 23 17" fill="none">
+                <path opacity="0.5" d="M23 8.5L1 8.5M1 8.5L9.55556 16.5M1 8.5L9.55556 0.499999" stroke="#000"/>
+                </svg>
+                </button>
+                <button class="slick-next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="17" viewBox="0 0 23 17" fill="none">
+                <path d="M0 8.5H22M22 8.5L13.4444 0.5M22 8.5L13.4444 16.5" stroke="#000"/>
+                </svg>
+                </button>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+</section>
+<script async src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <script type="text/javascript">
+$(document).ready(function() {
+    function initializeSlickCarousel() {
+        $('#tabs-content-{{ section.id }} .tab-content .data-content').each(function() {
+            $(this).slick({
+                dots: true, 
+                arrows: true,
+                speed: 500,
+                slidesToShow: 3,
+                prevArrow: $(this).closest('.tab-data').find('.slick-prev'),
+                nextArrow: $(this).closest('.tab-data').find('.slick-next'),
+                // Uncomment the following lines for responsive settings
+                // responsive: [
+                //   {
+                //   breakpoint: 992,
+                //   settings: {
+                //   slidesToShow: 3
+                //   }
+                //   },
+                //   {
+                //   breakpoint: 768,
+                //   settings: {
+                //   slidesToShow: 2
+                //   }
+                //   },
+                //   {
+                //   breakpoint: 480,
+                //   settings: {
+                //   slidesToShow: 1
+                //   }
+                //   }
+                // ]
+            });
+        });
+    }
+
+    // Initialize the carousel on page load
+    initializeSlickCarousel();
+
+    // Refresh the carousel when a tab is clicked
+    $('#tabs-nav-{{ section.id }} li').click(function() {
+        var currentTab = $(this).index();
+
+        // Show the current tab content and hide others
+        $('#tabs-content-{{ section.id }} .tab-content').hide();
+        $('#tabs-content-{{ section.id }} .tab-content').eq(currentTab).fadeIn();
+
+        // Refresh the slick carousel
+        $('#tabs-content-{{ section.id }} .tab-content .data-content').slick('refresh');
+    });
+});
+  </script> 
+
+<script>
+document.addEventListener("DOMContentLoaded", (event) => {
+    var $tabs = $('#tabs-nav-{{ section.id }} li'); // Selector correction
+    var totalTabs = $tabs.length;
+    var currentTab = 0;
+
+    function showTab(index) {
+        $tabs.removeClass('active'); // Remove active class from all tabs
+        $tabs.eq(index).addClass('active'); // Add active class to the current tab
+        $('#tabs-content-{{ section.id }} .tab-content').hide(); // Hide all tab contents
+        $('#tabs-content-{{ section.id }} .tab-content').eq(index).fadeIn(); // Show the selected tab content
+        updatePageInfo(index + 1, totalTabs); // Update the step info if necessary
+    }
+
+    function updatePageInfo(currentPage, totalPage) {
+        $('#page-info-{{ section.id }}').text('Step ' + currentPage + ' of ' + totalPage); // Update step information
+    }
+
+    showTab(currentTab); // Display the first tab on load
+
+    $tabs.click(function () {
+        currentTab = $(this).index(); // Get the index of the clicked tab
+        showTab(currentTab); // Show the corresponding tab content
+    });
+});
+</script>
+
+{% schema %}
+{
+  "name": "hr-subscrip-copy",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Main Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "desc",
+      "label": "Content",
+      "default": "<p>Content</p>"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "BG Color",
+      "default": "#FFF"
+    }, 
+
+  {
+        "type": "text",
+        "id": "step-txt",
+        "label": " Step Heading for Step Intruction",
+        "default": "Main Heading"
+    },
+    {
+        "type": "text",
+        "id": "step-desc",
+        "label": " Step Detail text",
+        "default": "text details for Step Intruction"
+      },
+    {
+        "type": "text",
+        "id": "step-txt2",
+        "label": " Step Heading for Step Intruction",
+        "default": "Main Heading"
+    },
+    {
+        "type": "text",
+        "id": "step-desc2",
+        "label": " Step Detail text",
+        "default": "text details for Step Intruction"
+      },
+    {
+        "type": "text",
+        "id": "step-txt3",
+        "label": " Step Heading for Step Intruction",
+        "default": "Main Heading"
+    },
+    {
+        "type": "text",
+        "id": "step-desc3",
+        "label": " Step Detail text",
+        "default": "text details for Step Intruction"
+      },
+{
+  "type": "color",
+  "id": "font_color",
+  "label": "Tabs Content Color"
+},
+{
+  "type": "color",
+  "id": "tab_content_bg_color",
+  "label": "BG Color Tab Content",
+  "default": "#FFF"
+},
+{
+  "type": "range",
+  "id": "padding_top_desktop",
+  "min": 0,
+  "max": 100,
+  "step": 5,
+  "unit": "px",
+  "label": "Padding Top Desktop",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "padding_bottom_desktop",
+  "min": 0,
+  "max": 100,
+  "step": 5,
+  "unit": "px",
+  "label": "Padding Bottom Desktop",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "padding_top_mobile",
+  "min": 0,
+  "max": 100,
+  "step": 5,
+  "unit": "px",
+  "label": "Padding Top Mobile",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "padding_bottom_mobile",
+  "min": 0,
+  "max": 100,
+  "step": 5,
+  "unit": "px",
+  "label": "Padding Bottom Mobile",
+  "default": 0
+}
+  ],
+  "blocks": [
+    {
+      "type": "add_step",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "Tab Title"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "shop_now",
+          "label": "Shop Now",
+          "default": "Shop Now"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "hr-subscrip-copy"
+    }
+  ]
+}
+{% endschema %}

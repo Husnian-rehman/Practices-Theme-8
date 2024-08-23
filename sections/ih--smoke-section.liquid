@@ -1,0 +1,293 @@
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"/>
+
+<style>
+  .ih--smoke-section .heading{
+    color: var(--WHITE, #FFF);
+    font-family: Syne;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145%; /* 52.2px */
+    letter-spacing: -0.72px;
+  }
+  .ih--smoke-section  .product-desc {
+    position: absolute;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-start;
+    gap: 25px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: rgba(34, 34, 34, 0.90);
+    backdrop-filter: blur(2.5px);
+    display: none;
+  }
+  .ih--smoke-section  .product-desc span {
+    color: #FFF;
+    text-align: center;
+    font-family: Syne;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 165%;
+  }
+  .ih--smoke-section  .product_image {
+    display: flex;
+    width: 100%;
+  }
+  .ih--smoke-section .default-col {
+    position: relative;
+  }
+  .ih--smoke-section  img {
+    width: 100%;
+  }
+  .ih--smoke-section  .inner-txt h2 {
+    color: #fff;
+    text-align: center;
+    font-family: Syne;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 155%;
+    letter-spacing: -0.22px;
+    margin: 0;
+  }
+  .ih--smoke-section  .default-col {
+    margin-bottom: 30px;
+  }
+  .ih--smoke-section  .slick-list.draggable {
+    padding: 100px 120px !important;
+  }
+  .ih--smoke-section  .slick-initialized .slick-slide {
+    display: block;
+    margin: 0 60px;
+    transition: transform 0.5s ease-in-out;
+  }
+  .ih--smoke-section .slick-center .product-desc {
+    display: flex;
+  }
+  .ih--smoke-section   .slick-slide {
+    transform: scaleY(0.8);
+  }
+  .ih--smoke-section  .slick-slide.slick-active {
+    transform: scaleY(0.9);
+  }
+  .ih--smoke-section  .slick-slide.slick-center {
+    transform: scaleY(1.2);
+  }
+  .ih--smoke-section  .slick-dots li {
+    width: auto; 
+    height:auto; 
+    margin: 0; 
+  }
+  .ih--smoke-section   .slick-dots li button{
+    transition: 0.3s all ease-in-out;
+  }
+  .ih--smoke-section  .slick-dots li button:before {
+    font-size: 12px;
+    opacity: 1;
+    color: #fff;
+  }
+  .ih--smoke-section  .slick-active button {
+    background: #BA2D25 !important;
+    border-radius: 10px;
+    width: 80px !important;
+  }
+  .ih--smoke-section  .slick-dots li.slick-active button:before {
+    color: #BA2D25;
+    font-size:0;
+  }
+  @media (max-width: 991px) {
+    .ih--smoke-section  .slick-list.draggable {
+    padding: 50px 30px !important;
+    }
+    .ih--smoke-section  .slick-initialized .slick-slide {
+    margin: 0 30px;
+    }
+  }
+  @media (max-width: 575px) {
+    .ih--smoke-section  .slick-list.draggable {
+    padding: 10px 15px !important;
+    }
+  }
+</style> 
+
+{% style %}
+
+#ih--smoke-section-{{ section.id }} {
+  background-color: {{ section.settings.bg_color }}; 
+  padding-top:{{ section.settings.desktop_padding_top }}px;
+  padding-bottom:{{ section.settings.desktop_padding_bottom }}px;
+  margin-top:{{ section.settings.desktop_margin_top }}px;
+  margin-bottom:{{ section.settings.desktop_margin_bottom }}px;
+}
+
+@media screen and (max-width: 991px) {
+  #ih--smoke-section-{{ section.id }} {
+    padding-top:{{ section.settings.mbl_padding_top }}px;
+    padding-bottom:{{ section.settings.mbl_padding_bottom }}px;
+    margin-top:{{ section.settings.mbl_margin_top }}px;
+    margin-bottom:{{ section.settings.mbl_margin_bottom }}px; 
+  }
+}
+{% endstyle %}
+<section class="ih--smoke-section" id="ih--smoke-section-{{ section.id }}">
+  <div class="page-width">
+    <h2 class="heading">{{ section.settings.subhead }}</h2>
+  </div>
+ <div class="ih--smoke-inner">
+   {% for block in section.blocks %}
+     <div class="product--card">
+        <div class="default-col">
+          <div class="product_image">
+            <img src="{{ block.settings.product.images[0] | image_url: width: block.settings.product.image.width }}" alt="{{ block.settings.product.title }}">
+          </div>
+          <div class="product-desc">
+            <span> {{ block.settings.pro-desc }}</span>
+          </div>
+        </div>
+        <div class="inner-txt">
+          <h2>{{ block.settings.product.title }}</h2>
+        </div>
+     </div>
+   {% endfor %}
+ </div>
+</section>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $('.ih--smoke-inner').slick({ // Changed selector here
+    dots: true, 
+    arrows: true,
+    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    centerMode: true,
+    infinity:true,
+    slidesToShow: 3,
+    responsive: [
+    {
+    breakpoint: 992,
+    settings: {
+    slidesToShow: 3
+    }
+    },
+    {
+    breakpoint: 768,
+    settings: {
+    slidesToShow: 2
+    }
+    },
+    {
+    breakpoint: 480,
+    settings: {
+    slidesToShow: 1
+    }
+    }
+    ]
+    });
+    });
+  </script> 
+
+{% schema %}
+{
+"name": "IH Smoke Section",
+"settings": [
+   {
+      "type": "text",
+      "id": "subhead",
+      "label": "Subhead",
+      "default": "Main Heading"
+    },
+  
+   {
+        "type": "color",
+        "id": "bg_color",
+        "label": "BG Color",
+        "default": "#FFF"
+      },
+     {
+        "type":"header",
+        "content":"Section Desktop Spacing"
+      }, 
+    {
+        "type": "range",
+        "id": "desktop_padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "desktop_padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+      },
+      {
+        "type":"header",
+        "content":"Section Mobile Spacing"
+      }, 
+      {
+        "type": "range",
+        "id": "mbl_padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "mbl_padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+      }
+],
+ "blocks":[
+      {
+        "type":"add_step",
+        "name":"Slide",
+        "settings":[
+             {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+           {
+      "type": "richtext",
+      "id": "pro-desc",
+      "label": "Content",
+      "default": "<p>Content</p>"
+    }
+
+    ]
+      }
+    ],
+"presets": [
+{
+"name": "IH Smoke Section"
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,168 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
+
+<style>
+.default-markey-section {
+  overflow: hidden;
+}
+.default-markey-section .announcement_bar_content {
+  width: max-content;
+  flex-shrink: 0;
+}
+.default-markey-section span,
+.default-markey-section p {
+  font-size: {{ section.settings.text_size }}px;
+     font-size: 12px;
+    line-height: 25px;
+    font-weight: 700;
+    display:block;
+     color:#fff;
+    position: relative;
+}
+  .marquee_text::after{
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: url('https://cdn.shopify.com/s/files/1/0650/1751/2113/files/af951ee19906985b04c80f8e80259088.png?v=1717539084') no-repeat center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    right: -31px;
+}
+#default-markey-section-{{ section.id }} {
+  background: {{section.settings.bg_color}};
+  padding-top:{{ section.settings.padding_top_desktop }}px;
+  padding-bottom:{{ section.settings.padding_bottom_desktop }}px;
+}
+{% for block in section.blocks %}
+  #announcement_bar_content-{{ block.id }} span,
+  #announcement_bar_content-{{ block.id }} p{
+    color: {{block.settings.text_color}};
+  }
+{% endfor %}
+</style>
+<section class="splide default-markey-section" id="default-markey-section-{{ section.id }}">
+  <div class="splide__track">
+    <ul class="splide__list">
+        {% for block in section.blocks %}
+          <li class="splide__slide">
+            <div class="announcement_bar_content" id="announcement_bar_content-{{ block.id }}">
+              {% if block.settings.marquee_text != blank %}
+                <span class="marquee_text">{{ block.settings.marquee_text }}</span>
+              {% endif %}
+            </div>
+          </li>
+       {% endfor %}
+    </ul>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var splide = new Splide('#default-markey-section-{{ section.id }}', {
+      type: 'loop',
+      pauseOnHover: true,
+      arrows: false,
+      pagination: false,
+      drag: 'free',
+      focus: 'center',
+      perPage: 6,
+      autoScroll: {
+        speed: 1,
+      },
+    });
+    splide.mount(window.splide.Extensions);
+  });
+</script>
+{% schema %}
+  {
+    "name": "Default Markey bar",
+    "settings": [
+      {
+        "type": "range",
+        "id": "text_size",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Font Size",
+        "default": 18
+      },
+      {
+        "type":"header",
+        "content":"Section Spacing Settings"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Top Desktop",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Bottom Desktop",
+        "default": 0
+       },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Top Mobile",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Bottom Mobile",
+        "default": 0
+       },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "#ed668f"
+      }
+    ],
+      "blocks": [
+     {
+       "name": "Slide",
+       "type": "slide",
+       "settings": [
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+          },
+          {
+            "type": "text",
+            "id": "marquee_text",
+            "label": "Marquee Text",
+            "default": "10 MG THC"
+          }
+       ]
+     }
+  ],
+    "presets":[
+      {
+        "name":"Default Markey bar"
+      }
+    ]
+  }
+{% endschema %}

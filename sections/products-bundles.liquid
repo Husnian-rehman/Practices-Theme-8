@@ -1,0 +1,189 @@
+  <style>
+    .pb-inner{
+      display:flex;
+    }
+    img{
+      width:100%;
+      height:100%;
+    }
+    .products-image {
+    height: 300px;
+    display: flex;
+    }
+  @media (max-width: 991px) {
+  }
+  @media (max-width: 767px) {
+  }
+  @media (max-width: 575px) {
+  }
+  </style>
+  {% style %}
+    #product-bundle-{{ section.id }} {
+    padding-top:{{ section.settings.desktop_padding_top }}px;
+    padding-bottom:{{ section.settings.desktop_padding_bottom }}px;
+    }
+  @media screen and (max-width: 991px) {
+    #product-bundle-{{ section.id }} {
+    padding-top:{{ section.settings.mbl_padding_top }}px;
+    padding-bottom:{{ section.settings.mbl_padding_bottom }}px; 
+    }
+  }
+  {% endstyle %}
+<section class="product-bundle" id="product-bundle-{{ section.id }}">
+ <div class="container page-width">
+   <div class="pb-inner">
+     {% for block in section.blocks %}
+       <div class="product-bundle-content">
+         {% assign product_ids = '' %}
+         {% for proitem in block.settings.product_list %}
+           <div class="product-col">
+             <div class="products-image">
+               {{ proitem.images[0] | image_url: width: proitem.image.width | image_tag: loading: 'lazy' }}
+             </div>
+             <span class="product-price">{{ proitem.price | money_without_trailing_zeros }} </span>
+             {% assign available = proitem.selected_or_first_available_variant.available %}
+             <div class="collection-cart">
+               {% for variant in proitem.variants %}
+                 <input type="hidden" class="variantgetid" value="{{ variant.id }}">
+                 {% assign product_ids = product_ids | append: variant.id | append: ',' %}
+               {% endfor %}
+               <input type="hidden" class="product-ids" value="{{ product_ids }}">
+             </div>
+           </div>
+         {% endfor %}
+         <button type="button" name="add" class="button add-bundle-button" data-bundle-id="{{ block.id }}">
+           Add Bundle to Cart
+         </button>
+       </div>
+     {% endfor %}
+   </div>
+ </div>
+</section>
+
+
+  <script>
+$(document).on('click', '.add-bundle-button', function() {
+  let bundleButton = $(this);
+  let productIds = bundleButton.closest('.product-bundle-content').find('.product-ids').val().split(',');
+
+  let formobjs = productIds.map(function(id) {
+    return {
+      quantity: 1,
+      id: id
+    };
+  });
+
+  // Perform AJAX requests for each product
+  let promises = formobjs.map(function(formobj) {
+    return $.ajax({
+      type: "POST",
+      url: "/cart/add.js",
+      data: formobj,
+      dataType: "json"
+    });
+  });
+
+  $.when.apply($, promises).done(function() {
+    console.log('All products added to cart');
+    $('.cartbtnicon').click();
+    $('.cart-drawer').load(location.href + " #CartDrawer");
+    $('#cart-icon-bubble').load(location.href + " #cart-icon-bubble");
+  }).fail(function() {
+    console.log('Error adding products to cart');
+  });
+});
+
+  </script>   
+{% schema %}
+{
+"name": "Products Bundle",
+"settings": [
+    {
+      "type": "text",
+      "id": "subhead",
+      "label": "Subhead",
+      "default": "Main Heading"
+     },
+     {
+      "type": "richtext",
+      "id": "desc",
+      "label": "Content",
+      "default": "<p>Content</p>"
+     },
+     {
+        "type": "color",
+        "id": "bg_color",
+        "label": "BG Color",
+        "default": "#FFF"
+      },
+     {
+        "type":"header",
+        "content":"Section Desktop Spacing"
+      }, 
+    {
+        "type": "range",
+        "id": "desktop_padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "desktop_padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+      },
+      {
+        "type":"header",
+        "content":"Section Mobile Spacing"
+      }, 
+      {
+        "type": "range",
+        "id": "mbl_padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "mbl_padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+      }
+],
+ "blocks":[
+      {
+        "type":"add_step",
+        "name":"Step",
+        "settings":[
+          {
+            "type": "product_list",
+            "id": "product_list",
+            "label": "Products",
+            "limit": 12
+          }
+
+    ]
+      }
+    ],
+"presets": [
+{
+"name": "Products Bundle"
+}
+]
+}
+{% endschema %}

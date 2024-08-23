@@ -1,0 +1,147 @@
+<style>
+  .quotes-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.quotes-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.control-tab {
+  max-height: 400px; /* Adjust height as necessary */
+}
+
+.quote-block {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.slick-vertical .slick-slide {
+  height: auto !important; /* Adjust to fit content */
+}
+</style>
+
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css" />
+
+<section class="quotes-section page-width">
+  <h1>{{ section.settings.main_heading }}</h1>
+  <span class="section-desc-testimo">{{ section.settings.sub_heading }}</span>
+  <div class="quotes-container">
+    <div id="quotes-slider" class="splide">
+      <div class="splide__track">
+        <ul class="splide__list control-tab">
+          {% for block in section.blocks %}
+            <li class="splide__slide quote-block {% if forloop.last %}last-quote{% endif %}">
+              <h2 class="quote-heading">{{ block.settings.quote_heading }}</h2>
+              <p class="quote-details">{{ block.settings.quote_details }}</p>
+              <p><strong class="writer-name">{{ block.settings.writer_name }}</strong></p>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="end-content-bottom">
+    <h2>{{ section.settings.last_heading }}</h2>
+    <span class="end-desc-testimo">{{ section.settings.last_txt }}</span>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    new Splide('#quotes-slider', {
+      type: 'loop',
+      perPage: 3,
+      height: '100vh', // Set the height to your requirement
+      direction: 'ttb', // Top-to-bottom direction
+      autoplay: true,
+      interval: 9000,
+      arrows: false,
+      pagination: true,
+      pauseOnHover: false,
+      breakpoints: {
+        992: {
+          pagination: false,
+        },
+        600: {
+          pagination: false,
+        },
+        480: {
+          pagination: false,
+        },
+      }
+    }).mount();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "quotes-steve",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "Remembering Steve"
+    },
+    {
+      "type": "richtext",
+      "id": "sub_heading",
+      "label": "Section detail text",
+      "default": "<p>Over a million people from all over the world have shared their memories</p>"
+    },
+    {
+      "type": "text",
+      "id": "last_heading",
+      "label": "End Heading",
+      "default": "Remembering Steve"
+    },
+    {
+      "type": "richtext",
+      "id": "last_txt",
+      "label": "End Section text",
+      "default": "<p>Over a million people from all over the world have shared their memories</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote_block",
+      "name": "Quote Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "quote_heading",
+          "label": "Quote Heading",
+          "default": "Quote Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "quote_details",
+          "label": "Quote Details",
+          "default": "Quote details here..."
+        },
+        {
+          "type": "text",
+          "id": "writer_name",
+          "label": "Writer Name",
+          "default": "Writer Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "quotes-steve",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

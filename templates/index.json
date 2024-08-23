@@ -1,0 +1,313 @@
+{
+  "sections": {
+    "grid_section_EnhDam": {
+      "type": "grid-section",
+      "blocks": {
+        "slide_VhYky3": {
+          "type": "slide",
+          "settings": {
+            "box_img": "shopify:\/\/shop_images\/frame-autumn-maple-leaves-natural-background-closeup-creative-photo-frame-autumn-maple-leaves-natural-background-closeup-129447901_f52541f1-27be-4d28-b89c-fe750d4119d7.jpg",
+            "sub_head": "Soursop",
+            "paragraph": "Supports cellular health, enhances mood, and a powerful antioxidant."
+          }
+        },
+        "slide_dwxjFR": {
+          "type": "slide",
+          "settings": {
+            "box_img": "shopify:\/\/shop_images\/images_2_d1fbb1b3-1b76-437b-b809-c97a7f79df0f.jpg",
+            "sub_head": "Soursop",
+            "paragraph": "Supports cellular health, enhances mood, and a powerful antioxidant."
+          }
+        },
+        "slide_QTaznE": {
+          "type": "slide",
+          "settings": {
+            "box_img": "shopify:\/\/shop_images\/images_11814bfc-503b-47cc-a63e-6330de116847.jpg",
+            "sub_head": "Soursop",
+            "paragraph": "Supports cellular health, enhances mood, and a powerful antioxidant."
+          }
+        },
+        "slide_Qe9L8W": {
+          "type": "slide",
+          "settings": {
+            "box_img": "shopify:\/\/shop_images\/images_87d0a295-5b8a-4c1d-904f-52757c616d83.jpg",
+            "sub_head": "Soursop",
+            "paragraph": "Supports cellular health, enhances mood, and a powerful antioxidant."
+          }
+        },
+        "slide_DQrAzd": {
+          "type": "slide",
+          "settings": {
+            "box_img": "shopify:\/\/shop_images\/wp6572221-peaky-blinders-4k-desktop-wallpapers.jpg",
+            "sub_head": "Soursop",
+            "paragraph": "Supports cellular health, enhances mood, and a powerful antioxidant."
+          }
+        }
+      },
+      "block_order": [
+        "slide_VhYky3",
+        "slide_dwxjFR",
+        "slide_QTaznE",
+        "slide_Qe9L8W",
+        "slide_DQrAzd"
+      ],
+      "settings": {
+        "headline": "Packed With Superfoods & Essential Nutrients",
+        "desc": "<p>Our ancestors THRIVED for centuries without doctors, modern medicine, and little to no medical knowledge. The reason why is simple... they used nature’s most powerful ingredients to heal their bodies naturally.Now, we’re passing on the same healing power to you.<\/p>",
+        "bottom_text": "View full ingredients list",
+        "pop_up_text": "<p>vddfdfdff<\/p>"
+      }
+    },
+    "fr_slider_section_8AXH7z": {
+      "type": "fr-slider-section",
+      "blocks": {
+        "add_step_UQJpxP": {
+          "type": "add_step",
+          "settings": {
+            "image1": "shopify:\/\/shop_images\/images_2_d1fbb1b3-1b76-437b-b809-c97a7f79df0f.jpg",
+            "des1": "<h3>Michael<\/h3><p>  Lorem Ipsum is simply text.<\/p>",
+            "desc1": "<p>What is Lorem Ipsum? Lorem Ipsum is simply dummytextof the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummytextever since the 1500s.<\/p>",
+            "image2": "shopify:\/\/shop_images\/wp6572221-peaky-blinders-4k-desktop-wallpapers.jpg",
+            "des2": "<h3>Robert<\/h3><p>  Lorem Ipsum is simply text.<\/p>",
+            "desc2": "<p>What is Lorem Ipsum? Lorem Ipsum is simply dummytextof the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummytextever since the 1500s.<\/p>",
+            "image3": "shopify:\/\/shop_images\/frame-autumn-maple-leaves-natural-background-closeup-creative-photo-frame-autumn-maple-leaves-natural-background-closeup-129447901_f52541f1-27be-4d28-b89c-fe750d4119d7.jpg",
+            "des3": "<h3>John<\/h3><p> Lorem Ipsum is simply text.<\/p>",
+            "desc3": "<p>What is Lorem Ipsum? Lorem Ipsum is simply dummytextof the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummytextever since the 1500s.<\/p><p>What is Lorem Ipsum? Lorem Ipsum is simply dummytextof the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummytextever since the 1500s.<\/p><p>What is Lorem Ipsum? Lorem Ipsum is simply dummytextof the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummytextever since the 1500s.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "add_step_UQJpxP"
+      ],
+      "settings": {
+        "heading": "Main Heading",
+        "bg_color": "#ffffff",
+        "desktop_padding_top": 30,
+        "desktop_padding_bottom": 35,
+        "mbl_padding_top": 20,
+        "mbl_padding_bottom": 30
+      }
+    },
+    "baner_text_with_form_6q6tc6": {
+      "type": "baner-text-with-form",
+      "settings": {
+        "heading": "Sleepless Nights? Find peace after divorce.",
+        "desc": "<p>Content<\/p>",
+        "btn_text": "request immediate consultation",
+        "btn_link": "",
+        "form-heading": "Request Immediate Consultation",
+        "bg_desktop_image": "shopify:\/\/shop_images\/wp6572221-peaky-blinders-4k-desktop-wallpapers.jpg",
+        "bg_mobile_image": "shopify:\/\/shop_images\/powerful-young-sportswoman-wearing-boxing-wraps-posing-M9RY5H_18c36e33-b50d-447e-954e-ed82488bdc59.jpg",
+        "desktop_alignment": "row",
+        "content_alignment": "column",
+        "bg_color": "#ffffff",
+        "desktop_padding_top": 75,
+        "desktop_padding_bottom": 75,
+        "mbl_padding_top": 30,
+        "mbl_padding_bottom": 40
+      }
+    },
+    "default_markey_section_zpMXL3": {
+      "type": "default-markey-section",
+      "blocks": {
+        "slide_eRhndX": {
+          "type": "slide",
+          "settings": {
+            "text_color": "#ffffff",
+            "marquee_text": "10 MG THC"
+          }
+        },
+        "slide_d8WKNE": {
+          "type": "slide",
+          "settings": {
+            "text_color": "",
+            "marquee_text": "10 MG THC"
+          }
+        },
+        "slide_kkRKfi": {
+          "type": "slide",
+          "settings": {
+            "text_color": "",
+            "marquee_text": "10 MG THC"
+          }
+        },
+        "slide_9pBEib": {
+          "type": "slide",
+          "settings": {
+            "text_color": "",
+            "marquee_text": "10 MG THC"
+          }
+        },
+        "slide_k9p6pz": {
+          "type": "slide",
+          "settings": {
+            "text_color": "",
+            "marquee_text": "10 MG THC"
+          }
+        }
+      },
+      "block_order": [
+        "slide_eRhndX",
+        "slide_d8WKNE",
+        "slide_kkRKfi",
+        "slide_9pBEib",
+        "slide_k9p6pz"
+      ],
+      "settings": {
+        "text_size": 30,
+        "padding_top_desktop": 15,
+        "padding_bottom_desktop": 15,
+        "padding_top_mobile": 15,
+        "padding_bottom_mobile": 15,
+        "bg_color": "#cba14b"
+      }
+    },
+    "ih_location_section_9RTKK7": {
+      "type": "ih-location-section",
+      "blocks": {
+        "add_step_KUABgf": {
+          "type": "add_step",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Icon_4c0afb10-669b-4179-ad78-fe0a038e0c57.png",
+            "heading": "Nar",
+            "desc": "<p>Nar Inkster<\/p><p>14733 S Telegraph Rd,<\/p><p>\u2028Monroe Charter Twp, MI 48161<\/p>"
+          }
+        },
+        "add_step_YHqaaM": {
+          "type": "add_step",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Icon_4c0afb10-669b-4179-ad78-fe0a038e0c57.png",
+            "heading": "Nar",
+            "desc": "<p>Nar Inkster<\/p><p>14733 S Telegraph Rd,<\/p><p>\u2028Monroe Charter Twp, MI 48161<\/p>"
+          }
+        },
+        "add_step_wiMAGb": {
+          "type": "add_step",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Icon_4c0afb10-669b-4179-ad78-fe0a038e0c57.png",
+            "heading": "Nar",
+            "desc": "<p>Nar Inkster<\/p><p>14733 S Telegraph Rd,<\/p><p>\u2028Monroe Charter Twp, MI 48161<\/p>"
+          }
+        },
+        "add_step_pXDX4m": {
+          "type": "add_step",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Icon_4c0afb10-669b-4179-ad78-fe0a038e0c57.png",
+            "heading": "Nar",
+            "desc": "<p>Nar Inkster<\/p><p>14733 S Telegraph Rd,<\/p><p>\u2028Monroe Charter Twp, MI 48161<\/p>"
+          }
+        },
+        "add_step_mHE6Vk": {
+          "type": "add_step",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Icon_4c0afb10-669b-4179-ad78-fe0a038e0c57.png",
+            "heading": "Nar",
+            "desc": "<p>Nar Inkster<\/p><p>14733 S Telegraph Rd,<\/p><p>\u2028Monroe Charter Twp, MI 48161<\/p>"
+          }
+        },
+        "add_step_jzdPCh": {
+          "type": "add_step",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Icon_4c0afb10-669b-4179-ad78-fe0a038e0c57.png",
+            "heading": "Nar",
+            "desc": "<p>Nar Inkster<\/p><p>14733 S Telegraph Rd,<\/p><p>\u2028Monroe Charter Twp, MI 48161<\/p>"
+          }
+        },
+        "add_step_KykrKV": {
+          "type": "add_step",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Icon_4c0afb10-669b-4179-ad78-fe0a038e0c57.png",
+            "heading": "Nar",
+            "desc": "<p>Nar Inkster<\/p><p>14733 S Telegraph Rd,<\/p><p>\u2028Monroe Charter Twp, MI 48161<\/p>"
+          }
+        },
+        "add_step_EwkYe7": {
+          "type": "add_step",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2Icon.png",
+            "heading": "nar",
+            "desc": "<p>ContentNar Inkster<\/p><p>14733 S Telegraph Rd,\u2028<\/p><p>Monroe Charter Twp, MI 48161<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "add_step_KUABgf",
+        "add_step_YHqaaM",
+        "add_step_wiMAGb",
+        "add_step_pXDX4m",
+        "add_step_mHE6Vk",
+        "add_step_jzdPCh",
+        "add_step_KykrKV",
+        "add_step_EwkYe7"
+      ],
+      "settings": {
+        "heading-top": "Where to Buy Our Product 🤟",
+        "bg_color": "#121212",
+        "desktop_padding_top": 35,
+        "desktop_padding_bottom": 45,
+        "mbl_padding_top": 30,
+        "mbl_padding_bottom": 30
+      }
+    },
+    "featured_collection_8fzzac": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "subtitle",
+        "collection": "kitchen",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_vedio_GrtwAC": {
+      "type": "image-with-vedio",
+      "settings": {
+        "desktop_headline": "Made in Nashville",
+        "desktop_desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <\/p>",
+        "btn_text1": "Shop All Kennels",
+        "btn_link1": "",
+        "btn_text2": "Shop All Kennels",
+        "btn_link2": "",
+        "bg_type": "video",
+        "destop_img": "shopify:\/\/shop_images\/powerful-young-sportswoman-wearing-boxing-wraps-posing-M9RY5H.jpg",
+        "desktop_video": "shopify:\/\/files\/videos\/SampleVideo_1280x720_20mb.mp4",
+        "external_video": "https:\/\/youtu.be\/f_kjTxkCR8Ihttps:\/\/youtu.be\/f_kjTxkCR8I",
+        "desktop_content_alignment": "middle-left",
+        "desktop_alignment": "row",
+        "mobile_content_alignment": "center",
+        "content_alignment": "column-reverse",
+        "desktop_padding_top": 55,
+        "desktop_padding_bottom": 50,
+        "mbl_padding_top": 25,
+        "mbl_padding_bottom": 30
+      }
+    }
+  },
+  "order": [
+    "grid_section_EnhDam",
+    "fr_slider_section_8AXH7z",
+    "baner_text_with_form_6q6tc6",
+    "default_markey_section_zpMXL3",
+    "ih_location_section_9RTKK7",
+    "featured_collection_8fzzac",
+    "image_with_vedio_GrtwAC"
+  ]
+}

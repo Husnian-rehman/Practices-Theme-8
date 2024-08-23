@@ -1,0 +1,383 @@
+  <style>
+  .text-video  img{
+    width:100%;
+    height:auto;
+    }
+   .text-video  video.desktop_video {
+    width: 100%;
+    object-fit: cover;
+    }
+    .text-video .hero_inner{
+      display:flex;
+      gap: 10px;
+    }
+    .text-video .banner_bg {
+      width: 50%;
+    }
+    .text-video .hero_content {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+    }
+    .text-video .hero_button {
+      display: flex;
+      gap: 30px;
+      width: fit-content;
+      margin: 20px auto;
+    }
+    @media screen and (max-width: 767px) {
+      .text-video .hero_inner{
+        flex-direction:column;
+      }
+      .text-video  .hero_content, .text-video .banner_bg {
+        width: 100%;
+      }
+    }
+  </style>
+
+  {% style %}
+    #hero-{{ section.id }} {
+      padding-top:{{ section.settings.desktop_padding_top }}px;
+      padding-bottom:{{ section.settings.desktop_padding_bottom }}px;
+    }
+    #hero-{{ section.id }} .hero_inner {
+      flex-direction: {{section.settings.desktop_alignment}};
+    }
+    #hero-{{ section.id }} .hero_content {
+    {% if section.settings.desktop_content_alignment == "center" %}
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    {% elsif section.settings.desktop_content_alignment == "bottom-left" %}
+      align-items: flex-start;
+      justify-content: flex-end;
+      text-align: left;
+    {% elsif section.settings.desktop_content_alignment == "bottom-right" %}
+      align-items: flex-end;
+      justify-content: flex-end;
+      text-align: right;
+    {% elsif section.settings.desktop_content_alignment == "middle-left" %}
+      align-items: flex-start;
+      justify-content: center;
+      text-align: left;
+    {% elsif section.settings.desktop_content_alignment == "middle-right" %}
+      align-items: flex-end;
+      justify-content: center;
+      text-align: right;
+    {% endif %}
+    }
+  @media screen and (max-width: 991px) {
+      #hero-{{ section.id }} {
+    padding-top:{{ section.settings.mbl_padding_top }}px;
+    padding-bottom:{{ section.settings.mbl_padding_bottom }}px;
+  }
+    #hero-{{ section.id }} .hero_content {
+    {% if section.settings.mobile_content_alignment == "center" %}
+      justify-content: center;
+      align-items: center;
+    {% elsif section.settings.mobile_content_alignment == "bottom-left" %}
+      align-items: flex-start;
+      justify-content: flex-end;
+    {% elsif section.settings.mobile_content_alignment == "bottom-right" %}
+      align-items: flex-end;
+      justify-content: flex-end;
+    {% endif %}
+    }
+    #hero-{{ section.id }} .hero_content {
+      position: {{section.settings.mobile_text_position }};
+    }  
+  }
+  @media screen and (max-width: 767px) {
+    #hero-{{ section.id }} .hero_inner{
+      flex-direction: {{section.settings.content_alignment}}
+    }
+  }
+  {% endstyle %}
+<section class="text-video" id= "hero-{{ section.id }}">
+  <div class="page-width">
+    <div class="hero_inner">
+              <div class="banner_bg">
+                {% if section.settings.bg_type == 'image' %}
+                    <div class="banner_img">
+                        {% if section.settings.destop_img != blank %}
+                            {{
+                                section.settings.destop_img
+                                | image_url: width: section.settings.destop_img.width
+                                | image_tag: loading: 'lazy', class: 'destop_img'
+                            }}
+                        {% endif %}
+                        {% if section.settings.mobile_img != blank %}
+                           {{section.settings.mobile_img
+                             | image_url: width: section.settings.mobile_img.width
+                              | image_tag: loading: 'lazy', class: 'mobile_img'
+                              }}
+                         {% endif %}
+                        
+                    </div>
+                {% elsif section.settings.bg_type == 'video'  %}
+                    <div class="banner_video">
+                        {% if section.settings.desktop_video != blank %}
+                            {{
+                                section.settings.desktop_video
+                                | video_tag: autoplay: true, loop: false, muted: true, class: 'desktop_video'
+                            }}
+                        {% endif %}
+                        
+                     </div>
+                  
+                {% elsif section.settings.bg_type == 'external video'  %}
+              <div class="banner_external_video">
+                {%- if section.settings.external_video.type == 'youtube' -%}
+            
+                    {% assign video_url = section.settings.external_video %}
+                    {% assign video_id = video_url | split: '/' | last | split: '&' | first %}
+                      <iframe
+                      src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1{{ loop }}"
+                      class="js-youtube"
+                      allow="autoplay; encrypted-media"
+                      allowfullscreen
+                      ></iframe>
+                    {%- else -%}
+                       {% assign video_id = section.settings.external_video | split: '/' | last %}
+                      <iframe
+                      src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1{{ loop }}"
+                      class="js-vimeo"
+                      allow="autoplay; encrypted-media"
+                      allowfullscreen
+                      ></iframe>
+                  {%- endif -%}
+                </div> 
+                {% endif %}
+            </div>
+        <div class="hero_content">
+            {% if section.settings.desktop_headline %}
+             <h2 class="hero_desktop">{{ section.settings.desktop_headline }}</h2>
+            {% endif %}
+            {% if section.settings.desktop_desc %}
+             <span class="hero_desktop">{{ section.settings.desktop_desc }}</span>
+            {% endif %} 
+        </div>
+    </div>
+    
+    <div class="hero_button">
+     {% if section.settings.btn_text1 != blank %}
+       <a class="primary_btn" href="{{ section.settings.btn_link1 }}">{{ section.settings.btn_text1 }}</a>
+    {% endif %}
+     {% if section.settings.btn_text2 != blank %}
+      <a class="secondary_btn" href="{{ section.settings.btn_link2 }}">{{ section.settings.btn_text2 }}</a>
+     {% endif %}
+    </div>
+  </div>
+</section>  
+{% schema %}
+  {
+    "name": "default text vedio ",
+    "settings": [
+      {
+        "type": "text",
+        "id": "desktop_headline",
+        "label": "Desktop Headline",
+        "default": "Made in Nashville"
+      },
+      {
+        "type": "richtext",
+        "id": "desktop_desc",
+        "label": "Desktop Description",
+        "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>"
+      },
+      {
+        "type": "text",
+        "id": "btn_text1",
+        "label": "Button1 Text",
+        "default": "Shop All Kennels"
+      },
+      {
+        "type": "url",
+        "id": "btn_link1",
+        "label": "Button1 URL"
+      },
+      {
+        "type": "text",
+        "id": "btn_text2",
+        "label": "Button2 Text",
+        "default": "Shop All Kennels"
+      },
+      {
+        "type": "url",
+        "id": "btn_link2",
+        "label": "Button2 URL"
+      },
+      {
+          "type": "select",
+          "id": "bg_type",
+          "label": "Background Type",
+          "options": [
+            {"value": "image", "label": "Image"},
+            {"value": "video", "label": "Video"},
+            {"value": "external video", "label": "External Video"}
+          ],
+          "default": "image"
+        },
+
+
+        {
+          "type": "image_picker",
+          "id": "destop_img",
+          "label": "Destop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_img",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "video",
+          "id": "desktop_video",
+          "label": "Desktop Video"
+        },
+          {
+          "type": "video_url",
+          "id": "external_video",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+          "label": "External Video"
+         },
+
+      
+        {
+        "type": "select",
+        "id": "desktop_content_alignment",
+        "label": "Desktop Content Alignment",
+        "options": [
+          {
+            "value": "center",
+            "label": "Centered"
+          },
+          {
+            "value": "bottom-left",
+            "label": "Bottom Left"
+          },
+          {
+            "value": "bottom-right",
+            "label": "Bottom Right"
+          },
+          {
+            "value": "middle-left",
+            "label": "Middle Left"
+          },
+          {
+            "value": "middle-right",
+            "label": "Middle Right"
+          }
+        ],
+        "default": "center"
+      },
+       {
+        "type": "select",
+        "id": "desktop_alignment",
+        "label": "Desktop Image Alignment",
+        "options": [
+          {
+            "value": "row",
+            "label": "Right"
+          },
+          {
+            "value": "row-reverse",
+            "label": "Left"
+          }
+        ],
+        "default": "row"
+       },
+      {
+        "type": "select",
+        "id": "mobile_content_alignment",
+        "label": "Mobile Content Alignment",
+        "options": [
+          {
+            "value": "center",
+            "label": "Centered"
+          },
+          {
+            "value": "bottom-left",
+            "label": "Left Aligned"
+          },
+          {
+            "value": "Bottom-right",
+            "label": "Right Aligned"
+          }
+        ],
+        "default": "center"
+      },
+        {
+          "type": "select",
+          "id": "content_alignment",
+          "label": "Content Alignment",
+          "options": [
+            {
+              "value": "column",
+              "label": "Top"
+            },
+            {
+              "value": "column-reverse",
+              "label": "Bottom"
+            }
+          ],
+          "default": "column"
+        },
+        {
+        "type":"header",
+        "content":"Section Desktop Spacing"
+      }, 
+    {
+        "type": "range",
+        "id": "desktop_padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "desktop_padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+      },
+      {
+        "type":"header",
+        "content":"Section Mobile Spacing"
+      }, 
+      {
+        "type": "range",
+        "id": "mbl_padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "mbl_padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+      }
+
+    ],
+    "presets": [
+      {
+        "name": "default text vedio "
+      }
+    ]
+  }
+{% endschema %}
